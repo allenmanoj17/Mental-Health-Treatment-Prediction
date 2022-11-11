@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{url_for('static', filename='/styles/predict.css')}}">
+
+  <!-- title of the project -->
+  <title>RESULTS</title>
+
+
+</head>
+
+<body>
+
+  <!-------------------------------------- prediction result pg ------------------------------------------------>
+
+
+
+  <h1 class="title">PREDICTION RESULT</h1>
+
+  <!----------------------------------------- result condn ---------------------------------------------------->
+  <div class="results">
+    {% if prediction==0 %}
+    <div class = "healthy">
+      <h3>You are healthy</h3>
+      <p>Your mental health is alright</p>
+    </div>
+    {% elif prediction==1 %}
+    <div class = "nothealthy">
+      <h3>You are not healthy</h3>
+      <p>You need medical guidance</p>
+    </div>
+
+    {% endif %}
+    <!-------------------------------------- end of result condn ----------------------------------------------->
+  </div>
+
+</body>
+
+</html>

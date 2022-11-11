@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='/styles/home.css')}}">
+    <title>Mental Health</title>
+
+</head>
+
+<body>
+    <!-- Canvas -->
+    <canvas class="orb-canvas"></canvas>
+    <!-- Overlay -->
+    <div class="overlay">
+        <!-- Overlay inner wrapper -->
+        <div class="overlay__inner">
+            <!-- Title -->
+            <h1 class="overlay__title">
+                One place to know about your mental well-being!
+            </h1>
+            <!-- Description -->
+            <p class="overlay__description">
+                Your mental health is an important part of your well-being. This aspect of your welfare determines how
+                you’re able to operate psychologically, emotionally, and socially among others.
+
+                Considering how much of a role your mental health plays in each aspect of your life, it's important to
+                guard and improve psychological wellness using appropriate measures.
+
+            </p>
+            <!-- Buttons -->
+
+            <div class="overlay__btns">
+
+                <button class="overlay__btn overlay__btn--colors">
+                    <a href="#form">
+                        <b>Predict your Mental Health 🧠</b>
+                    </a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="form" id="form">
+        <section class = "impform">
+            <h2 class="titles">Mental Health Predictor</h2>
+            <form action="{{ url_for('predict') }}" method="POST">
+
+                <div class="input-container">
+                    <label for="Gender">Gender</label>
+                    <br><br>
+
+                    <select name="Gender" required>
+                        <option disabled selected value> Select </option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="2">Trans</option>
+                    </select>
+                </div>
+
+                <div class="input-container">
+                    <label for="self_employed">Are you self-employed?</label>
+                    <br><br>
+
+                    <select name="self_employed" required>
+                        <option disabled selected value> Select </option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="input-container">
+                    <label for="family_history">Do you have a family history of mental illness?</label>
+                    <br><br>
+
+                    <select name="family_history" required>
+                        <option disabled selected value> Select </option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+
+
+                <div class="input-container">
+                    <label for="work_interfere">If you have a mental health condition, do you feel that it interferes
+                        with your work?</label>
+                        <br><br>
+
+                    <select name="work_interfere" required>
+                        <option disabled selected value> Select </option>
+                        <option value="1">Never</option>
+                        <option value="3">Rarely</option>
+                        <option value="4">Sometimes</option>
+                        <option value="2">Often</option>
+                        <option value="0">Don't Know</option>
+                    </select>
+                </div>
+
+
+                <div class="input-container">
+                    <label for="no_employees">Number of employees in the organisation?</label>
+                    <br><br>
+
+                    <select name="no_employees" required>
+                        <option disabled selected value> Select </option>
+                        <option value="0">1-5</option>
+                        <option value="4">6-25</option>
+                        <option value="2">26-100</option>
+                        <option value="1">100-500</option>
+                        <option value="3">500-1000</option>
+                        <option value="5">More than 1000</option>
+                    </select>
+                </div>
+
+                <div class="input-container">
+                    <label for="remote_work">Do you work remotely (outside of an office) at least 50% of the
+                        time?</label>
+                        <br><br>
+
+                    <select name="remote_work" required>
+                        <option disabled selected value> Select </option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="input-container">
+                    <label for="tech_company">Is your employer primarily a tech company/organization?</label>
+                    <br><br>
+
+                    <select name="tech_company" required>
+                        <option disabled selected value> Select </option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="input-container">
+                    <label for="anonymity">Is your anonymity protected if you choose to take advantage of mental health
+                        or substance abuse treatment?</label>
+                        <br><br>
+
+                    <select name="anonymity" required>
+                        <option disabled selected value> Select </option>
+                        <option value="2">Yes</option>
+                        <option value="1">No</option>
+                        <option value="0">Don't Know</option>
+                    </select>
+                </div>
+
+                <div class="input-container">
+                    <label for="leave">How easy is it for you to take medical leave for a mental health
+                        condition?</label>
+                        <br><br>
+
+                    <select name="leave" required>
+                        <option disabled selected value> Select </option>
+                        <option value="0">Don't know</option>
+                        <option value="4">Very easy</option>
+                        <option value="2">Somewhat easy</option>
+                        <option value="1">Somewhat difficult</option>
+                        <option value="3">Very difficult</option>
+                    </select>
+                </div>
+                <!---->
+                <div class="input-container">
+                    <label for="mental_health_consequence">Do you think that discussing a mental health issue with your
+                        employer would have negative consequences?</label>
+                        <br><br>
+
+                    <select name="mental_health_consequence" required>
+                        <option disabled selected value> Select </option>
+                        <option value="2">Yes</option>
+                        <option value="1">No</option>
+                        <option value="0">Maybe</option>
+                    </select>
+                </div>
+
+                <div class="input-container">
+                    <label for="phys_health_consequence">Do you think that discussing a physical health issue with your
+                        employer would have negative consequences?</label>
+                        <br><br>
+
+                    <select name="phys_health_consequence" required>
+                        <option disabled selected value> Select </option>
+                        <option value="2">Yes</option>
+                        <option value="1">No</option>
+                        <option value="0">Maybe</option>
+                    </select>
+                </div>
+
+                <div class="input-container">
+                    <label for="coworkers">Would you be willing to discuss a mental health issue with your
+                        coworkers?</label>
+                        <br><br>
+
+                    <select name="coworkers" required>
+                        <option disabled selected value> Select </option>
+                        <option value="2">Yes</option>
+                        <option value="0">No</option>
+                        <option value="1">Some of them</option>
+                    </select>
+                </div>
+
+
+                <div class="input-container">
+                    <label for="supervisor">Would you be willing to discuss a mental health issue with your direct
+                        supervisor(s)?</label>
+                        <br><br>
+
+                    <select name="supervisor" required>
+                        <option disabled selected value> Select </option>
+                        <option value="2">Yes</option>
+                        <option value="0">No</option>
+                        <option value="1">Some of them</option>
+                    </select>
+                </div>
+
+
+                <div class="input-container">
+                    <label for="mental_health_interview">Would you bring up a mental health issue with a potential
+                        employer in an interview?</label>
+                        <br><br>
+
+                    <select name="mental_health_interview" required>
+                        <option disabled selected value> Select </option>
+                        <option value="2">Yes</option>
+                        <option value="1">No</option>
+                        <option value="0">Maybe</option>
+                    </select>
+                </div>
+
+                <div class="input-container">
+                    <label for="phys_health_interview">Would you bring up a physical health issue with a potential
+                        employer in an interview?</label>
+                        <br><br>
+
+                    <select name="phys_health_interview" required>
+                        <option disabled selected value> Select </option>
+                        <option value="2">Yes</option>
+                        <option value="1">No</option>
+                        <option value="0">Maybe</option>
+                    </select>
+                </div>
+
+                <div class="input-container">
+                    <label for="mental_vs_physical">Do you feel that your employer takes mental health as seriously as
+                        physical health?</label>
+                        <br><br>
+
+                    <select name="mental_vs_physical" required>
+                        <option disabled selected value> Select </option>
+                        <option value="2">Yes</option>
+                        <option value="1">No</option>
+                        <option value="0">Don't Know</option>
+                    </select>
+                </div>
+
+                <div class="input-container">
+                    <label for="obs_consequence">Have you heard of or observed negative consequences for coworkers with
+                        mental health conditions in your workplace?</label>
+                        <br><br>
+
+                    <select name="obs_consequence" required>
+                        <option disabled selected value> Select </option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+
+
+                <div class="input-container">
+                    <label for="benefits">Does your employer provide mental health benefits?</label>
+                    <br><br>
+
+                    <select name="benefits" required>
+                        <option disabled selected value> Select </option>
+                        <option value="2">Yes</option>
+                        <option value="1">No</option>
+                        <option value="0">Don't Know</option>
+                    </select>
+                </div>
+
+                <div class="input-container">
+                    <label for="care_options">Do you know the options for mental health care your employer
+                        provides?</label>
+                        <br><br>
+
+                    <select name="care_options" required>
+                        <option disabled selected value> Select </option>
+                        <option value="2">Yes</option>
+                        <option value="0">No</option>
+                        <option value="1">Not sure</option>
+                    </select>
+                </div>
+
+
+                <div class="input-container">
+                    <label for="wellness_program">Has your employer ever discussed mental health as part of an employee
+                        wellness program?</label>
+                        <br><br>
+
+                    <select name="wellness_program" required>
+                        <option disabled selected value> Select </option>
+                        <option value="2">Yes</option>
+                        <option value="1">No</option>
+                        <option value="0">Don't Know</option>
+                    </select>
+                </div>
+
+
+                <div class="input-container">
+                    <label for="seek_help">Does your employer provide resources to learn more about mental health issues
+                        and how to seek help?</label>
+<br><br>
+                    <select name="seek_help" required>
+                        <option disabled selected value> Select </option>
+                        <option value="2">Yes</option>
+                        <option value="1">No</option>
+                        <option value="0">Don't Know</option>
+                    </select>
+                </div>
+<div class="submit">
+                <input type="submit" value="Predict" onclick="return true" />
+
+</div>
+            </form>
+    </div>
+</body>
+
+</html>
